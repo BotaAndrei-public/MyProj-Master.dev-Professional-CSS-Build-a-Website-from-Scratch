@@ -24,20 +24,21 @@
   blockquote,
   dl,
   dd {
-    margin-block-end: 0;
+    margin: 0;
   }
 
   /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
-  ul[role="list"],
-  ol[role="list"] {
+    [role="list"] {
     list-style: none;
+    margin: 0;
+    padding: 0;
   }
 
   /* Set core body defaults */
   body {
     min-height: 100vh;
     line-height: 1.6;
-    margin: 0;
+ 
   }
 
   /* Set shorter line heights on headings and interactive elements */
@@ -59,6 +60,14 @@
     text-wrap: balance;
   }
 
+  a{
+    text-decoration: none;
+  }
+  ul{
+    direction: none;
+    text-decoration: none;
+     list-style-type: none;
+  }
   /* A elements that don't have a class get default styles */
   a:not([class]) {
     text-decoration-skip-ink: auto;
@@ -199,14 +208,32 @@
 }
 
 @layer layout {
+  .section {
+    --section-max-padding-block: 3.75rem;
+    /* 4.5, 8, 3.75 */
+    @media (width >= 760px) {
+      --section-max-padding-block: 8rem;
+      
+      &[data-padding="compact"] {
+        --section-max-padding-block: 4.5rem;
+      }
+    }
+
+    padding-block: var(--section-max-padding-block);
+  }
+
   .wrapper {
-    max-width: 1130px;
+    --wrapper-max-width: 1130px;
+    max-width: var(--wrapper-max-width);
     margin-inline: auto;
     padding-inline: 1rem;
     box-sizing: content-box;
 
-    &[data-width="wide"]{
-       max-width: 1330px; 
+    &[data-width="wide"] {
+      --wrapper-max-width: 1330px;
+    }
+    &[data-width="narrow"] {
+      --wrapper-max-width: 720px;
     }
   }
 }
