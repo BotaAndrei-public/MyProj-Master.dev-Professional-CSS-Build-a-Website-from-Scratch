@@ -28,7 +28,7 @@
   }
 
   /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
-    [role="list"] {
+  [role="list"] {
     list-style: none;
     margin: 0;
     padding: 0;
@@ -38,7 +38,6 @@
   body {
     min-height: 100vh;
     line-height: 1.6;
- 
   }
 
   /* Set shorter line heights on headings and interactive elements */
@@ -60,13 +59,13 @@
     text-wrap: balance;
   }
 
-  a{
+  a {
     text-decoration: none;
   }
-  ul{
+  ul {
     direction: none;
     text-decoration: none;
-     list-style-type: none;
+    list-style-type: none;
   }
   /* A elements that don't have a class get default styles */
   a:not([class]) {
@@ -205,15 +204,47 @@
   a:focus-visible {
     color: var(--text-brand-light);
   }
+  img {
+    border-radius: 1rem;
+  }
 }
 
 @layer layout {
+
+  .flow > * + *{
+    margin-top: 1.5em;
+  }
+
+  .grid-flow{
+    display: grid;
+    gap: var(--grid-flow-gap, 1rem);
+  }
+
+  .equal-columns {
+    --equal-columns-gap: 1.5rem;
+    
+    display: grid;
+    gap: var(--equal-columns-gap, 1rem);
+    align-items: var(--vertical-alignment, stretch);
+    @media (width > 760px) {
+      grid-auto-flow: column;
+      grid-auto-columns: 1fr;
+    }
+
+    &[data-gap="large"] {
+      --equal-columns-gap: 3rem;
+    }
+    &[data-vertical-alignment="centered"]
+    {
+      --vertical-alignment:center;
+    }
+  }
   .section {
     --section-max-padding-block: 3.75rem;
     /* 4.5, 8, 3.75 */
     @media (width >= 760px) {
       --section-max-padding-block: 8rem;
-      
+
       &[data-padding="compact"] {
         --section-max-padding-block: 4.5rem;
       }
@@ -238,6 +269,24 @@
   }
 }
 
+@layer components {
+  .side-header {
+    padding-block: 1rem;
+  }
+  .site-header__inner {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 2rem;
+    justify-content: space-between;
+  }
+
+  .site-header__inner > nav > ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 2rem;
+  }
+}
+
 @layer utilities {
   .visually-hidden {
     clip: rect(0 0 0 0);
@@ -247,5 +296,91 @@
     position: absolute;
     white-space: nowrap;
     width: 1px;
+  }
+
+  .text-center {
+    text-align: center;
+  }
+  .section-title {
+    font-size: var(--font-size-heading-regular);
+  }
+
+  .text-main {
+    color: var(--text-main);
+  }
+
+  .text-high-contrast {
+    color: var(--text-high-contrast);
+  }
+
+  .text-brand {
+    color: var(--text-brand);
+  }
+
+  .text-brand-light {
+    color: var(--text-brand-light);
+  }
+
+  .background-accent-light {
+    background-color: var(--background-accent-light);
+  }
+
+  .background-accent-main {
+    background-color: var(--background-accent-main);
+  }
+
+  .background-accent-dark {
+    background-color: var(--background-accent-dark);
+  }
+
+  .background-extra-light {
+    background-color: var(--background-extra-light);
+  }
+
+  .background-light {
+    background-color: var(--background-light);
+  }
+
+  .background-main {
+    background-color: var(--background-main);
+  }
+
+  .background-dark {
+    background-color: var(--background-dark);
+  }
+
+  .background-extra-dark {
+    background-color: var(--background-extra-dark);
+  }
+
+  .font-size-heading-sm {
+    font-size: var(--font-size-heading-sm);
+  }
+
+  .font-size-heading-regular {
+    font-size: var(--font-size-heading-regular);
+  }
+
+  .font-size-heading-lg {
+    font-size: var(--font-size-heading-lg);
+  }
+
+  .font-size-heading-xl {
+    font-size: var(--font-size-heading-xl);
+  }
+
+  .font-size-sm {
+    font-size: var(--font-size-sm);
+  }
+  .font-size-regular {
+    font-size: var(--font-size-regular);
+  }
+
+  .font-size-md {
+    font-size: var(--font-size-md);
+  }
+
+  .font-size-lg {
+    font-size: var(--font-size-lg);
   }
 }
