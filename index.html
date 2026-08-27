@@ -17,7 +17,11 @@
       <div class="wrapper" data-width="wide">
         <div class="site-header__inner">
           <img src="/assets/fungi-finders.svg" alt="Fungi Finders" />
-          <nav class="primary-navigation">
+          <button aria-controls="primary-nav" aria-expanded="false">
+            <span class="visually-hidden">menu</span>
+            <img src="/assets/hamburger.svg" alt="" />
+          </button>
+          <nav id="primary-nav" class="primary-navigation">
             <ul>
               <li>
                 <a href="/">Discover</a>
@@ -188,10 +192,8 @@
       </section>
     </main>
     <footer class="site-footer">
-      
-        <p class="site-footer__title">Happy Foraging!</p>
-        <a href="mailto: contact@fungifinders.com">contact@fungifinders.com</a>
-      
+      <p class="site-footer__title">Happy Foraging!</p>
+      <a href="mailto: contact@fungifinders.com">contact@fungifinders.com</a>
     </footer>
   </body>
 </html>
