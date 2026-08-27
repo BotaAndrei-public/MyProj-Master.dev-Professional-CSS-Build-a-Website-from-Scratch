@@ -210,19 +210,18 @@
 }
 
 @layer layout {
-
-  .flow > * + *{
+  .flow > * + * {
     margin-top: 1.5em;
   }
 
-  .grid-flow{
+  .grid-flow {
     display: grid;
     gap: var(--grid-flow-gap, 1rem);
   }
 
   .equal-columns {
     --equal-columns-gap: 1.5rem;
-    
+
     display: grid;
     gap: var(--equal-columns-gap, 1rem);
     align-items: var(--vertical-alignment, stretch);
@@ -234,9 +233,8 @@
     &[data-gap="large"] {
       --equal-columns-gap: 3rem;
     }
-    &[data-vertical-alignment="centered"]
-    {
-      --vertical-alignment:center;
+    &[data-vertical-alignment="centered"] {
+      --vertical-alignment: center;
     }
   }
   .section {
@@ -284,6 +282,42 @@
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem 2rem;
+  }
+
+  .hero {
+    background-image: url(/assets/hero.webp);
+    background-size: cover;
+    background-position: center;
+    h1 {
+      font-size: var(--font-size-heading-lg);
+    }
+
+    span {
+      font-size: var(--font-size-heading-xl);
+      display: block;
+    }
+  }
+
+  .card {
+    padding: 1rem;
+    background-color: var(--background-light);
+    border-radius: var(--border-radius-3);
+
+    h3 {
+      color: var(--text-brand);
+      font-size: var(--font-size-heading-sm);
+    }
+    img {
+      border-radius: var(--border-radius-2);
+    }
+    p {
+      font-size: var(--font-size-regular);
+      text-align: left;
+    }
+
+    .joy-sec{
+      font-size: 2rem;
+    }
   }
 }
 
