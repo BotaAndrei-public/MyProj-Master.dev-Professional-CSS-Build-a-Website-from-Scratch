@@ -232,7 +232,7 @@
     display: grid;
     gap: 1rem;
     grid-template-columns: repeat(
-      auto-fit,
+      auto-fill,
       minmax(min(var(--auto-fir-min-col-size), 100%), 1fr)
     );
   }
@@ -382,7 +382,9 @@
   }
 
   .faq-bento {
-    .card h3{ color: var(--text-high-contrast);}
+    .card h3 {
+      color: var(--text-high-contrast);
+    }
     display: grid;
     gap: 1rem;
     grid-template-areas:
@@ -405,13 +407,13 @@
         "card-three card-three card-four";
     }
 
-    @media (width > 600px){
-      .card:nth-child(even) > img{
+    @media (width > 600px) {
+      .card:nth-child(even) > img {
         order: 3;
       }
     }
 
-    .card > img{
+    .card > img {
       height: 100%;
       object-fit: cover;
     }
@@ -422,8 +424,8 @@
     .card:nth-child(2) {
       grid-area: card-two;
       @media (width > 760px) {
-        .card:nth-child > img{
-            position: 3;
+        .card:nth-child > img {
+          position: 3;
         }
       }
     }
@@ -435,7 +437,7 @@
         display: grid;
         gap: 1rem;
         grid-template-columns: 1fr 1fr;
-        img{
+        img {
           grid-column: 1/2;
           grid-row: 1/3;
         }
@@ -587,6 +589,9 @@
 }
 
 @layer utilities {
+  [hidden]{
+    display: none;
+  }
   .visually-hidden {
     clip: rect(0 0 0 0);
     clip-path: inset(50%);
@@ -683,3 +688,28 @@
     font-size: var(--font-size-lg);
   }
 }
+
+/* .mushroom-guide:has(#season [value="spring"]:checked)
+  .card:not(:has([data-season="spring"])) {
+  display: none;
+}
+
+.mushroom-guide:has(#season [value="summer"]:checked)
+  .card:not(:has([data-season="summer"])) {
+  display: none;
+}
+
+.mushroom-guide:has(#season [value="fall"]:checked)
+  .card:not(:has([data-season="fall"])) {
+  display: none;
+}
+
+.mushroom-guide:has(#edible [value="edible"]:checked)
+  .card:not(:has([data-edible="edible"])) {
+  display: none;
+}
+
+.mushroom-guide:has(#edible [value="toxic"]:checked)
+  .card:not(:has([data-edible="toxic"])) {
+  display: none;
+} */

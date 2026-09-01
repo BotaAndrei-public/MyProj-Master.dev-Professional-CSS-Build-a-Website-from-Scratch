@@ -11,6 +11,7 @@
       href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;700&family=Outfit:wght@100..900&display=swap"
       rel="stylesheet"
     />
+    <script src="/mushroom-filter.js" defer></script>
     <script src="/main.js" defer></script>
   </head>
   <a class="skip-to-main" href="#main">Skip to main content</a>
@@ -224,14 +225,14 @@
             <h2 class="section-title">Get to know your mushrooms</h2>
             <div>
               <div class="flex-group">
-                <select class=" ">
+                <select name="season" id="season" class=" " hidden>
                   <option value="all">Season: All</option>
                   <option value="spring">Spring</option>
                   <option value="summer">Summer</option>
                   <option value="fall">Fall</option>
-                  <option value="all">Winter</option>
+                  <option value="winter">Winter</option>
                 </select>
-                <select class=" ">
+                <select name="edible" id="edible" class=" " hidden>
                   <option value="all">Type: All</option>
                   <option value="edible">Edible</option>
                   <option value="toxic">Toxic</option>
@@ -558,6 +559,7 @@
                 </div>
               </div>
             </div>
+            <div class="no-matches" hidden>No matches for these filters</div>
           </div>
         </div>
       </section>
