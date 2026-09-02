@@ -1,3 +1,7 @@
+@view-transition {
+  navigation: auto;
+}
+
 @layer reset {
   /* Box sizing rules */
   *,
@@ -286,8 +290,10 @@
 }
 
 @layer components {
-  .side-header {
+  .site-header {
     padding-block: 1rem;
+    overflow-x: clip;
+    position: relative;
   }
   .site-header__inner {
     display: flex;
@@ -314,6 +320,14 @@
     display: none;
   }
   .site-header__inner > nav {
+    opacity: 1;
+
+    transition:
+      opacity 200ms,
+      display 200ms,
+      translate 500ms;
+    transition-behavior: allow-discrete;
+    translate: 0 0;
     @media (width < 760px) {
       display: none;
       background: var(--background-accent-main);
@@ -332,6 +346,13 @@
         flex-direction: column;
         gap: 0;
         list-style: none;
+      }
+
+      li {
+        translate: 50%;
+        transition:
+          translate 300ms 300ms,
+          opacity 300ms 300ms;
       }
 
       li + li {
@@ -357,6 +378,22 @@
     }
     [aria-expanded="true"] ~ .primary-navigation {
       display: block;
+      opacity: 1;
+      translate: 0 0;
+      @starting-style {
+        opacity: 0;
+        translate: 0 -100%;
+      }
+
+      li {
+        opacity: 1;
+        translate: 0 0;
+
+        @starting-style {
+          opacity: 0;
+          translate: 0 -100%;
+        }
+      }
     }
   }
   .site-footer {
@@ -461,6 +498,25 @@
       font-size: var(--font-size-heading-xl);
       display: block;
     }
+    /* animation: fade-out both;
+    animation-timeline: view();
+    animation-range-start: exit;
+    will-change: opacity; */
+  }
+
+  .section {
+    /* animation: fade-out both;
+    animation-timeline: view();
+    animation-range-start: exit;
+    will-change: opacity;
+    contain: paint; */
+  }
+
+  .card {
+    animation: fade-out both;
+    animation-timeline: view();
+    animation-range-start: exit;
+    will-change: opacity;
   }
 
   .mushroom-guide .card__title {
@@ -589,8 +645,13 @@
 }
 
 @layer utilities {
-  [hidden]{
+  [hidden] {
     display: none;
+  }
+
+  .resizing {
+    transition: none;
+    animation-play-state: paused;
   }
   .visually-hidden {
     clip: rect(0 0 0 0);
@@ -713,3 +774,12 @@
   .card:not(:has([data-edible="toxic"])) {
   display: none;
 } */
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
